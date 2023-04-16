@@ -6,23 +6,27 @@ export default {
     {
       name: 'name',
       type: 'string',
-      title: 'Name'
+      title: 'Name',
+      initialValue: 'Jhon Doe'
     },
     {
       name: 'role',
       type: 'string',
-      title: 'Role'
+      title: 'Role',
+      initialValue: 'Programmer'
     },
     {
       name: 'bio',
       type: 'string',
-      title: 'Bio'
+      title: 'Bio',
+      initialValue: 'Nam id nibh quis mauris tincidunt mattis. Vivamus vitae justo tristique erat scelerisque pulvinar quis tempor dolor.'
     },
     {
       name: 'about',
       type: 'text',
       title: 'About',
       rows: 10,
+      initialValue: 'Nam id nibh quis mauris tincidunt mattis. Vivamus vitae justo tristique erat scelerisque pulvinar quis tempor dolor.'
     },
     {
       name: 'image',

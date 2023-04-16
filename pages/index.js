@@ -8,6 +8,7 @@ import Link from "next/link"
 import { ArrowRight } from "react-feather"
 import useConfig from "@hooks/useConfig"
 import client from "@utils/client"
+import '../envs'
 
 const HomePage = ({ bio, posts }) => {
   const { config } = useConfig()

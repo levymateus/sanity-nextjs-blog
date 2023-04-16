@@ -1,9 +1,8 @@
 const path = require('path')
 
 const imagesDomains = []
-const isDev = process.env.NODE_ENV === 'development' || process.env.NEXT_PUBLIC_ENV === 'development'
 
-if (isDev) {
+if (process.env.NEXT_PUBLIC_ENV === 'development') {
   imagesDomains.push('localhost')
 }
 

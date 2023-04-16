@@ -39,8 +39,7 @@ function Card() {
     <Stepper
       maxSteps={2}
       onComplete={() => {
-        console.log('email', values['email'])
-        console.log('text', values['text'])
+        // code ...
       }}
     >
       {({ step, next }) => <form

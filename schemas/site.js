@@ -6,17 +6,20 @@ export default {
     {
       name: 'title',
       type: 'string',
-      title: 'Title'
+      title: 'Title',
+      initialValue: 'Sanity Nextjs Blog.'
     },
     {
       name: 'blog',
       type: 'string',
-      title: 'Blog'
+      title: 'Blog',
+      initialValue: 'Search for some posted content.'
     },
     {
       name: 'snippets',
       type: 'string',
-      title: 'Snippets'
+      title: 'Snippets',
+      initialValue: 'Search for some code snnipets content.'
     },
   ]
 }
