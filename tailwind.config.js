@@ -23,7 +23,7 @@ module.exports = {
           letterSpacing: 0
         }],
         base: ['16px', {
-          lineHeight: '18px',
+          lineHeight: '28px',
           letterSpacing: 0
         }],
         lg: ['17px', {
