@@ -30,5 +30,4 @@
 
 .next
 *.d.ts
-*.env
-*.env.production
+*.env*
