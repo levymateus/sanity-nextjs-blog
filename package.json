@@ -58,5 +58,8 @@
     "printWidth": 100,
     "bracketSpacing": false,
     "singleQuote": true
+  },
+  "resolutions": {
+    "yaml": "^2.2.2"
   }
 }
