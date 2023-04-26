@@ -4,7 +4,7 @@ import Heading from "@components/Heading"
 import Text from "@components/Text"
 import Post from "@components/Post"
 import useList from "@hooks/useList"
-import { useState } from "react"
+import { useReducer, useState } from "react"
 import clsx from "clsx"
 import InputSeach from "@components/InputSearch"
 import useIsMounted from "@hooks/useIsMounted"
@@ -14,7 +14,7 @@ function Blog({ blog, posts: postsProp }) {
   const [posts, { set }] = useList(postsProp)
   const isMounted = useIsMounted()
   const [searchIsActive, setSearchIsActive] = useState(false)
-  const [search, setSeach] = useState('')
+  const [search, setSeach] = useReducer((_, value) => value.trim(), '')
 
   return (
     <div className="mt-10">
@@ -49,7 +49,9 @@ function Blog({ blog, posts: postsProp }) {
           <Heading size="xl" className={clsx("fade-in mb-8", { "hidden": search })}>
             All Posts
           </Heading>
-          <Text className={clsx({ "hidden": posts.length })}>No results!</Text>
+          <Text className={clsx({ "hidden": posts.length })}>
+            <span>{`No posts found${search && ` for: "${search}"`}.`}</span>
+          </Text>
           <div className={clsx("space-y-7", { "hidden": !posts.length })}>
             {posts.map(({ slug, title, description, _createdAt }) => <Post
               key={slug}
