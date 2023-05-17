@@ -5,12 +5,13 @@ import {schemaTypes} from './schemas'
 import { getStartedPlugin } from './plugins/sanity-plugin-tutorial'
 import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 import * as envs from './envs'
+import { name as title } from './package.json'
 
 const devOnlyPlugins = [getStartedPlugin()]
 
 export default defineConfig({
   name: 'default',
-  title: 'sanity-nextjs-blog',
+  title: title,
 
   projectId: envs.sanityProjectId,
   dataset: envs.sanityDataset,
