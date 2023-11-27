@@ -1,8 +1,10 @@
 const path = require('path')
+const withBundleAnalyzer = require('@next/bundle-analyzer')
 
+const isBundleAnalyzeEnabled = process.env.ANALYZE == 'true'
 const imagesDomains = []
 
-if (process.env.NEXT_PUBLIC_ENV === 'development') {
+if (process.env.NEXT_PUBLIC_ENV == process.env.NODE_ENV) {
   imagesDomains.push('localhost')
 }
 
@@ -14,4 +16,6 @@ const nextConfig = {
   reactStrictMode: true,
 }
 
-module.exports = nextConfig
+module.exports = withBundleAnalyzer({
+  enabled: isBundleAnalyzeEnabled,
+})(nextConfig)
