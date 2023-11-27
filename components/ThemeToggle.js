@@ -1,4 +1,4 @@
-import { Moon } from "react-feather"
+import { Moon, Sun } from "react-feather"
 import useTheme from "@hooks/useTheme"
 import If from "@components/If"
 import Toggle from "@components/Toggle"
@@ -15,7 +15,7 @@ const ThemeToggle = () => {
       </Toggle.On>
       <Toggle.Off>
         {(on) => <Button accessKey="l" onClick={() => { setAsLight(); on() }}>
-          <Moon />
+          <Sun />
         </Button>}
       </Toggle.Off>
     </Toggle>

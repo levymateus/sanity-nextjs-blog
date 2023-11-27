@@ -5,6 +5,7 @@ import If from "@components/If"
 import useConfig from "@hooks/useConfig"
 import client from "@utils/client"
 import { blurDataURL } from "@utils/blurDataURL"
+import LazyLoad from "@components/LazyLoad"
 import dynamic from "next/dynamic"
 import '../envs'
 
@@ -38,9 +39,7 @@ const HomePage = ({ bio, posts }) => {
     <If stmt={posts.length}>
       <FeaturedPosts posts={posts} />
     </If>
-    <If stmt={config?.contact}>
-      <Contact />
-    </If>
+    <LazyLoad render={() => config?.contact ? <Contact /> : <></>} loading={() => <p>loading...</p>} />
   </>
 };
 

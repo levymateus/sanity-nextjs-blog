@@ -19,6 +19,8 @@ const items = [
 const Sidebar = ({ onSelectItem }) => {
   const ref = useRef()
   const [list, { forEach, filter }] = useList(items)
+
+  // TODO: set sidebar open on keyboard 'alt' key pressed.
   const [isOpen, setOpen] = useStore(({ sidebarIsOpen, setSidebarOpen }) => [sidebarIsOpen, setSidebarOpen])
   const [isVisible, setVisible] = useState(false)
   const { config } = useConfig()

@@ -4,6 +4,7 @@ import useEventListener from "@hooks/useEventListener"
 import dynamic from "next/dynamic"
 import clsx from "clsx"
 import useStore from "@hooks/useStore"
+import LazyLoad from "@components/LazyLoad"
 
 const AppBar = dynamic(() => import("../components/AppBar"), { ssr: false })
 const SideBar = dynamic(() => import("../components/Sidebar"), { ssr: false })
@@ -35,7 +36,7 @@ const Layout = ({ children }) => {
           {children}
         </main>
 
-        <Footer />
+        <LazyLoad render={() => <Footer />} loading={() => <p>loading...</p>} />
       </div>
 
     </Animation>
