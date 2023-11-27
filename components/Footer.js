@@ -14,8 +14,8 @@ function NavLink({ href, children, ...props }) {
 
 function Footer() {
   const { config } = useConfig()
-  return <>
-    <div className="grid sm:grid-cols-3 border-t border-black dark:border-neutral-500 pt-6">
+  return <footer>
+    <div className="grid sm:grid-cols-3 border-t border-black dark:border-neutral-500 pt-6 mt-8">
       <ul className="flex flex-col">
         <NavLink href="/">Home</NavLink>
         <NavLink href="/about">About</NavLink>
@@ -44,7 +44,7 @@ function Footer() {
       <Text className="mb-3">Designed and developed by <strong>Levy Mateus Macedo</strong></Text>
       <Text>Build with <Link href="https://nextjs.org" target="_blank" passHref><strong>Next.js</strong></Link> and <Link href="https://tailwindcss.com" target="_blank" passHref><strong>Tailwindcss</strong></Link>.</Text>
     </div>
-  </>
+  </footer>
 }
 
 export default Footer

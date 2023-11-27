@@ -1,14 +1,16 @@
 import { useState } from "react"
-import AppBar from "@components/AppBar"
-import Footer from "@components/Footer"
-import Sidebar from "@components/Sidebar"
 import Animation from "@components/Animation"
 import useEventListener from "@hooks/useEventListener"
+import dynamic from "next/dynamic"
 import clsx from "clsx"
 import useStore from "@hooks/useStore"
 
+const AppBar = dynamic(() => import("../components/AppBar"), { ssr: false })
+const SideBar = dynamic(() => import("../components/Sidebar"), { ssr: false })
+const Footer = dynamic(() => import("../components/Footer", { ssr: false }))
+
 function Layout({ children }) {
-  const appBarState = useStore(({ appBarState }) => appBarState)
+  const { sidebarIsOpen, appBarIsOpen, setAppBarIsOpen } = useStore()
   const [animation, setAnimation] = useState()
 
   function handleToggleMenu(isOpen) {
@@ -16,14 +18,9 @@ function Layout({ children }) {
   }
 
   useEventListener("resize", () => setAnimation())
+  useEventListener("load", () => setAppBarIsOpen(true))
 
   return <div className={clsx("container flex flex-col overflow-x-hidden sm:overflow-clip px-4 mb-14 mt-[80px] mx-auto sm:max-w-screen-md")}>
-
-    <AppBar onToggleMenu={handleToggleMenu} />
-
-    <div className="fixed top-[104px] left-0 right-0 px-4 bg-white dark:bg-black z-10">
-      <Sidebar onSelectItem={() => setAnimation("bounce-left")} />
-    </div>
 
     <Animation
       asChild
@@ -38,12 +35,18 @@ function Layout({ children }) {
           {children}
         </main>
 
-        <footer className="mt-8">
-          <Footer />
-        </footer>
+        <Footer />
       </div>
 
     </Animation>
+
+    {appBarIsOpen && <>
+      <AppBar onToggleMenu={handleToggleMenu} />
+
+      <div className="fixed top-[104px] left-0 right-0 px-4 bg-white dark:bg-black z-10">
+        {sidebarIsOpen && <SideBar onSelectItem={() => setAnimation("bounce-left")} />}
+      </div>
+    </>}
 
   </div>
 }

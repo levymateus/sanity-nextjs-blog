@@ -1,6 +1,5 @@
 import { useEffect } from "react"
 import { useRouter } from "next/router"
-import nProgress from "nprogress"
 
 import useLockedBody from "@hooks/useLockedBody"
 
@@ -9,18 +8,24 @@ function useProgress() {
   const [, setLocked] = useLockedBody(false)
 
   useEffect(() => {
-    const handleStart = () => {
+    const handleStart = (nProgress) => () => {
       setLocked(true)
       nProgress.start()
     }
-    const handleStop = () => {
+
+    const handleStop = (nProgress) => () => {
       setLocked(false)
       nProgress.done()
     }
 
-    router.events.on('routeChangeStart', handleStart)
-    router.events.on('routeChangeComplete', handleStop)
-    router.events.on('routeChangeError', handleStop)
+    async function asyncLoadProgress() {
+      const nProgress = (await import('nprogress')).default
+      router.events.on('routeChangeStart', handleStart(nProgress))
+      router.events.on('routeChangeComplete', handleStop(nProgress))
+      router.events.on('routeChangeError', handleStop(nProgress))
+    }
+
+    asyncLoadProgress()
 
     return () => {
       router.events.off('routeChangeStart', handleStart)
@@ -28,8 +33,6 @@ function useProgress() {
       router.events.off('routeChangeError', handleStop)
     }
   }, [router, setLocked])
-
-  return nProgress
 }
 
 export default useProgress
