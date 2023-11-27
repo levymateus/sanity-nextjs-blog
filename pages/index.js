@@ -8,13 +8,21 @@ import Link from "next/link"
 import { ArrowRight } from "react-feather"
 import useConfig from "@hooks/useConfig"
 import client from "@utils/client"
+import { blurDataURL } from "@utils/blurDataURL"
 import '../envs'
 
 const HomePage = ({ bio, posts }) => {
   const { config } = useConfig()
-  return <div className="fade-in">
+  return <>
     <section className="flex pt-10 flex-col sm:flex-row">
-      <Avatar src={bio.imageUrl} alt={bio.imageCaption} className="order-1 sm:order-2" />
+      <Avatar
+        src={bio.imageUrl}
+        alt={bio.imageCaption}
+        blurDataURL={bio.blurDataURL}
+        placeholder="blur"
+        loading="lazy"
+        className="order-1 sm:order-2"
+      />
       <div className="flex-1 mt-8 sm:mt-0 flex-col order-2 sm:order-1">
         <Heading size="xl" asChild>
           <h1>{bio.name}</h1>
@@ -62,7 +70,7 @@ const HomePage = ({ bio, posts }) => {
         <Card />
       </section>
     </If>
-  </div>
+  </>
 };
 
 export async function getStaticProps() {
@@ -73,6 +81,7 @@ export async function getStaticProps() {
     "imageUrl": image.asset->url,
     "imageCaption": image.caption
   }`)
+  bio.blurDataURL = await blurDataURL(bio.imageUrl, "image/jpeg")
   const site = await client.fetch(`*[_type == "site"][0]`)
   const posts = await client.fetch(`*[_type == "post"][0...3]{ slug, title } | order(releaseDate desc) | order(_createdAt asc)`)
   return {
