@@ -1,5 +1,5 @@
 
-function If({ stmt, children }) {
+const If = ({ stmt, children }) => {
   if (stmt) {
     return children
   }

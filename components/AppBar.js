@@ -10,7 +10,7 @@ import dynamic from "next/dynamic"
 const ThemeToggle = dynamic(() => import("./ThemeToggle"), { ssr: false })
 const HamburgerMenu = dynamic(() => import("./HamburgerMenu"), { ssr: false })
 
-function AppBar({ onToggleMenu }) {
+const AppBar = ({ onToggleMenu }) => {
   const [appBarState, setAppBarState] = useState('')
   const [isAltKeyPressed, setAltKeyIsPressed] = useState(false)
   const { config } = useConfig()

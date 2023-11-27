@@ -8,7 +8,7 @@ function pathAsArray(argPath) {
   return path
 }
 
-export default function Breadcumb() {
+const Breadcumb = () => {
   const router = useRouter()
   const pathArr = pathAsArray(router.asPath)
   const path = []
@@ -39,3 +39,5 @@ export default function Breadcumb() {
     {path.map((Path) => Path)}
   </div>
 }
+
+export default Breadcumb

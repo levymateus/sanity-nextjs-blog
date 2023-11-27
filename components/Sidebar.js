@@ -16,7 +16,7 @@ const items = [
   { href: '/blog', name: 'Blog', duration: 1.2 }
 ]
 
-function Sidebar({ onSelectItem }) {
+const Sidebar = ({ onSelectItem }) => {
   const ref = useRef()
   const [list, { forEach, filter }] = useList(items)
   const [isOpen, setOpen] = useStore(({ sidebarIsOpen, setSidebarOpen }) => [sidebarIsOpen, setSidebarOpen])

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef } from 'react'
 import clsx from 'clsx'
 
-function Markdown({ children, className }) {
+const Markdown = ({ children, className }) => {
   const ref = useRef(null)
 
   const renderer = useCallback((HLJS) => ({

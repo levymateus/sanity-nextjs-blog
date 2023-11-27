@@ -13,7 +13,7 @@ function reducer(prevState, { maxSteps }) {
   return { ...prevState }
 }
 
-function Stepper({ initialStep = 1, maxSteps = 1, onComplete = new Function, children }) {
+const Stepper = ({ initialStep = 1, maxSteps = 1, onComplete = new Function, children }) => {
   const initialState = { step: initialStep }
   const [{ step }, dispath] = useReducer(reducer, initialState, (arg) => arg)
 
@@ -31,11 +31,9 @@ function Stepper({ initialStep = 1, maxSteps = 1, onComplete = new Function, chi
 
 Stepper.displayName = 'Stepper'
 
-function Step({ num = 1, children }) {
+const Step = ({ num = 1, children }) => {
   const { step, next } = useContext(StepperContext)
-
   const render = typeof children === 'function' ? children({ step, next }) : children
-
   return step === num ? <>{render}</> : null
 }
 

@@ -6,7 +6,7 @@ import { useRouter } from "next/router"
 
 let timeoutId = null
 
-export default function InputSeach({ value, setActive, onCancel, setValue, onChange }) {
+const InputSeach = ({ value, setActive, onCancel, setValue, onChange }) => {
   const [isAltKeyPressed, setAltKeyIsPressed] = useState(false)
   const [inputValue, setInputValue] = useState('')
   const inputSearchRef = useRef()
@@ -96,3 +96,5 @@ export default function InputSeach({ value, setActive, onCancel, setValue, onCha
       />}
   </InputText>
 }
+
+export default InputSeach

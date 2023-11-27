@@ -4,7 +4,7 @@ import Text from "@components/Text"
 import If from "@components/If"
 import useConfig from "@hooks/useConfig"
 
-function NavLink({ href, children, ...props }) {
+const NavLink = ({ href, children, ...props }) => {
   return <li className="my-2">
     <Link href={href} {...props} passHref>
       <span className="text-black hover:text-indigo-600 dark:hover:text-white dark:text-neutral-500">{children}</span>
@@ -12,7 +12,7 @@ function NavLink({ href, children, ...props }) {
   </li>
 }
 
-function Footer() {
+const Footer = () => {
   const { config } = useConfig()
   return <footer>
     <div className="grid sm:grid-cols-3 border-t border-black dark:border-neutral-500 pt-6 mt-8">

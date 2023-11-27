@@ -9,7 +9,7 @@ const AppBar = dynamic(() => import("../components/AppBar"), { ssr: false })
 const SideBar = dynamic(() => import("../components/Sidebar"), { ssr: false })
 const Footer = dynamic(() => import("../components/Footer", { ssr: false }))
 
-function Layout({ children }) {
+const Layout = ({ children }) => {
   const { sidebarIsOpen, appBarIsOpen, setAppBarIsOpen } = useStore()
   const [animation, setAnimation] = useState()
 

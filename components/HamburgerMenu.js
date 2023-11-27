@@ -2,7 +2,7 @@ import { Menu, X } from "react-feather"
 import Button from "@components/Button"
 import useStore from "@hooks/useStore"
 
-export default function HamburgerMenu({ onToggleMenu }) {
+const HamburgerMenu = ({ onToggleMenu }) => {
   const [sidebarIsOpen, setSidebarOpen] = useStore(({ sidebarIsOpen, setSidebarOpen }) => [sidebarIsOpen, setSidebarOpen])
 
   function handleClick(value) {
@@ -26,3 +26,5 @@ export default function HamburgerMenu({ onToggleMenu }) {
     <Menu />
   </Button>
 }
+
+export default HamburgerMenu

@@ -11,7 +11,7 @@ import { X } from "react-feather"
 import useStore from "@hooks/useStore"
 import clsx from "clsx"
 
-function Card() {
+const Card = () => {
   const emailInputRef = useRef()
   const [values, setValues] = useState({ text: '', email: '' })
   const router = useRouter()

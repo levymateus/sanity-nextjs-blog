@@ -1,6 +1,8 @@
 
-export default function Body({ children }) {
+const Body = ({ children }) => {
   return (
     <body className="dark:bg-black">{children}</body>
   )
 }
+
+export default Body

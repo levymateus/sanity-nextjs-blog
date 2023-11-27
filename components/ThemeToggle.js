@@ -4,7 +4,7 @@ import If from "@components/If"
 import Toggle from "@components/Toggle"
 import Button from "@components/Button"
 
-export default function ThemeToggle() {
+const ThemeToggle = () => {
   const [theme, setAsDark, setAsLight] = useTheme()
   return <If stmt={theme}>
     <Toggle defaultValue={theme === 'light'}>
@@ -21,3 +21,5 @@ export default function ThemeToggle() {
     </Toggle>
   </If>
 }
+
+export default ThemeToggle
