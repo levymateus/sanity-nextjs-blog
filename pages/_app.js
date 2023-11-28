@@ -6,17 +6,13 @@ import "@styles/globals.css"
 import Layout from "@components/Layout"
 import useProgress from "@hooks/useProgress"
 import useEventListener from "@hooks/useEventListener"
-import { useRouter } from "next/router"
 import useTheme from "@hooks/useTheme"
 import RemoteConfig from "context/RemoteConfig"
 import client from "@utils/client"
 
 const App = ({ Component, pageProps }) => {
-  const router = useRouter()
-
   useTheme()
   useProgress()
-
   useEventListener('keydown', () => {
     if (!document.activeElement) {
       window.focus()
