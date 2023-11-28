@@ -6,6 +6,7 @@ import clsx from "clsx"
 import { useState } from "react"
 import useConfig from "@hooks/useConfig"
 import dynamic from "next/dynamic"
+import debounce from "@utils/debounce"
 
 const ThemeToggle = dynamic(() => import("./ThemeToggle"), { ssr: false })
 const HamburgerMenu = dynamic(() => import("./HamburgerMenu"), { ssr: false })
@@ -15,17 +16,11 @@ const AppBar = ({ onToggleMenu }) => {
   const [isAltKeyPressed, setAltKeyIsPressed] = useState(false)
   const { config } = useConfig()
 
-  useScroll('on-scroll-down', () => {
-    setAppBarState('bounce-top')
-  })
+  useScroll('on-scroll-down', debounce(() => setAppBarState('bounce-top'), 500))
 
-  useScroll('on-scroll-up', () => {
-    setAppBarState('bounce-bottom')
-  })
+  useScroll('on-scroll-up', debounce(() => setAppBarState('bounce-bottom'), 500))
 
-  useScroll('on-scroll-top', () => {
-    setAppBarState('bounce-bottom')
-  })
+  useScroll('on-scroll-top', debounce(() => setAppBarState('bounce-bottom'), 500))
 
   useEventListener('keydown', (evt) => {
     setAltKeyIsPressed(evt.altKey)
