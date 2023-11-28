@@ -6,7 +6,7 @@ import { useRouter } from "next/router"
 
 let timeoutId = null
 
-export default function InputSeach({ value, setActive, onCancel, setValue, onChange }) {
+const InputSeach = ({ value, setActive, onCancel, setValue, onChange }) => {
   const [isAltKeyPressed, setAltKeyIsPressed] = useState(false)
   const [inputValue, setInputValue] = useState('')
   const inputSearchRef = useRef()
@@ -20,8 +20,7 @@ export default function InputSeach({ value, setActive, onCancel, setValue, onCha
     setAltKeyIsPressed(evt.altKey)
   })
 
-  function handleChange(evt) {
-
+  const handleChange = (evt) => {
     setInputValue(evt.target.value)
 
     if (timeoutId) {
@@ -38,12 +37,12 @@ export default function InputSeach({ value, setActive, onCancel, setValue, onCha
     }
   }
 
-  function handleFocus() {
+  const handleFocus = () => {
     router.push(`/blog#blog-search`)
     setActive(true)
   }
 
-  function handleBlur(evt) {
+  const handleBlur = (evt) => {
     if (document.activeElement.id === 'blog-input-search') {
       clearSearch()
     } else if (!evt.target.value) {
@@ -52,7 +51,7 @@ export default function InputSeach({ value, setActive, onCancel, setValue, onCha
     }
   }
 
-  function clearSearch() {
+  const clearSearch = () => {
     setValue('')
     setInputValue('')
     onCancel()
@@ -96,3 +95,5 @@ export default function InputSeach({ value, setActive, onCancel, setValue, onCha
       />}
   </InputText>
 }
+
+export default InputSeach
