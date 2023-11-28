@@ -1,8 +1,10 @@
 import useEventListener from "@hooks/useEventListener"
 import debounce from "@utils/debounce"
+import { useRouter } from "next/router"
 import { useCallback, useEffect, useRef, useState } from "react"
 
 const LazyLoad = ({ render, loading: Loading }) => {
+  const router = useRouter()
   const [canLoad, setCanLoad] = useState(false)
   const ref = useRef()
 
@@ -15,6 +17,12 @@ const LazyLoad = ({ render, loading: Loading }) => {
       if (lessThanInnerHeight) setCanLoad(true)
     }, 500),
   [setCanLoad, ref])
+
+  useEffect(() => {
+    const handleRouteChangeComplete = () => handleScroll()
+    router.events.on('routeChangeComplete', handleRouteChangeComplete)
+    return () => router.events.off('routeChangeComplete', handleRouteChangeComplete)
+  }, [router])
 
   useEffect(handleScroll, [ref, setCanLoad])
   useEventListener('scroll', handleScroll)

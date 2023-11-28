@@ -39,7 +39,9 @@ const HomePage = ({ bio, posts }) => {
     <If stmt={posts.length}>
       <FeaturedPosts posts={posts} />
     </If>
-    <LazyLoad render={() => config?.contact ? <Contact /> : <></>} loading={() => <p>loading...</p>} />
+    <If stmt={config?.contact}>
+      <Contact />
+    </If>
   </>
 };
 
