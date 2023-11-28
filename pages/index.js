@@ -5,7 +5,6 @@ import If from "@components/If"
 import useConfig from "@hooks/useConfig"
 import client from "@utils/client"
 import { blurDataURL } from "@utils/blurDataURL"
-import LazyLoad from "@components/LazyLoad"
 import dynamic from "next/dynamic"
 import '../envs'
 
