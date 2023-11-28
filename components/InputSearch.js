@@ -20,8 +20,7 @@ const InputSeach = ({ value, setActive, onCancel, setValue, onChange }) => {
     setAltKeyIsPressed(evt.altKey)
   })
 
-  function handleChange(evt) {
-
+  const handleChange = (evt) => {
     setInputValue(evt.target.value)
 
     if (timeoutId) {
@@ -38,12 +37,12 @@ const InputSeach = ({ value, setActive, onCancel, setValue, onChange }) => {
     }
   }
 
-  function handleFocus() {
+  const handleFocus = () => {
     router.push(`/blog#blog-search`)
     setActive(true)
   }
 
-  function handleBlur(evt) {
+  const handleBlur = (evt) => {
     if (document.activeElement.id === 'blog-input-search') {
       clearSearch()
     } else if (!evt.target.value) {
@@ -52,7 +51,7 @@ const InputSeach = ({ value, setActive, onCancel, setValue, onChange }) => {
     }
   }
 
-  function clearSearch() {
+  const clearSearch = () => {
     setValue('')
     setInputValue('')
     onCancel()

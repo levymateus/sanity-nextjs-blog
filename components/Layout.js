@@ -14,9 +14,7 @@ const Layout = ({ children }) => {
   const { sidebarIsOpen, appBarIsOpen, setAppBarIsOpen } = useStore()
   const [animation, setAnimation] = useState()
 
-  function handleToggleMenu(isOpen) {
-    setAnimation(isOpen ? "bounce-right" : "bounce-left")
-  }
+  const handleToggleMenu = (isOpen) => setAnimation(isOpen ? "bounce-right" : "bounce-left")
 
   useEventListener("resize", () => setAnimation())
   useEventListener("load", () => setAppBarIsOpen(true))

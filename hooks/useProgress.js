@@ -3,7 +3,7 @@ import { useRouter } from "next/router"
 
 import useLockedBody from "@hooks/useLockedBody"
 
-function useProgress() {
+const useProgress = () => {
   const router = useRouter()
   const [, setLocked] = useLockedBody(false)
 
@@ -18,7 +18,7 @@ function useProgress() {
       nProgress.done()
     }
 
-    async function asyncLoadProgress() {
+    const asyncLoadProgress = async () => {
       const nProgress = (await import('nprogress')).default
       router.events.on('routeChangeStart', handleStart(nProgress))
       router.events.on('routeChangeComplete', handleStop(nProgress))

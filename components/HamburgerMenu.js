@@ -5,9 +5,9 @@ import useStore from "@hooks/useStore"
 const HamburgerMenu = ({ onToggleMenu }) => {
   const [sidebarIsOpen, setSidebarOpen] = useStore(({ sidebarIsOpen, setSidebarOpen }) => [sidebarIsOpen, setSidebarOpen])
 
-  function handleClick(value) {
-    setSidebarOpen(value)
-    onToggleMenu(value)
+  const handleClick = (toggle) => {
+    setSidebarOpen(toggle)
+    onToggleMenu(toggle)
   }
 
   if (sidebarIsOpen) {

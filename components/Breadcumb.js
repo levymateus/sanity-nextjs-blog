@@ -2,7 +2,7 @@ import { useRouter } from "next/router"
 import Text from "@components/Text"
 import Button from "@components/Button"
 
-function pathAsArray(argPath) {
+const pathAsArray = (argPath) => {
   let path = argPath.split('/')
   path = path.slice(1, path.length)
   return path

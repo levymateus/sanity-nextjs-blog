@@ -1,8 +1,6 @@
 
 const If = ({ stmt, children }) => {
-  if (stmt) {
-    return children
-  }
+  if (stmt) return children
   return null
 }
 

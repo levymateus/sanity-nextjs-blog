@@ -26,7 +26,7 @@ const Sidebar = ({ onSelectItem }) => {
   const { config } = useConfig()
   const animation = isOpen ? "bounce-right" : "bounce-left"
 
-  function rearrange(pivot) {
+  const rearrange = (pivot) => {
     let step = 0.4
     forEach((_, index, array) => {
       if (pivot !== index) {

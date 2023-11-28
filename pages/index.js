@@ -43,7 +43,7 @@ const HomePage = ({ bio, posts }) => {
   </>
 };
 
-export async function getStaticProps() {
+export const getStaticProps = async () => {
   const bio = await client.fetch(`*[_type == "bio"][0]{
     name,
     role,

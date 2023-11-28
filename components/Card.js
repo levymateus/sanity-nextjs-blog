@@ -18,7 +18,7 @@ const Card = () => {
   const hash = router.asPath.split('#')[1]
   const setAppBarIsOpen = useStore(({ setAppBarIsOpen }) => setAppBarIsOpen)
 
-  function handleInputChange(evt) {
+  const handleInputChange = (evt) => {
     setValues(prevValues => ({
       ...prevValues,
       [evt.target.name]: evt.target.value
