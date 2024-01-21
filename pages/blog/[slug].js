@@ -1,7 +1,6 @@
 import Heading from "@components/Heading"
 import PostMeta from "@components/PostMeta"
 import Markdown from "@components/Markdown"
-import { useRouter } from "next/router"
 import Breadcumb from "@components/Breadcumb"
 import useTimeout from "@hooks/useTimeout"
 import usePost from "@hooks/usePost"
@@ -24,7 +23,7 @@ function Post({ post }) {
   </LoadingState>
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   const posts = await client.fetch(`*[_type == "post"]{
     "slug": slug.current
   }`)
@@ -36,7 +35,7 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps(context) {
+export const getStaticProps = async (context) => {
   const post = await client.fetch(`*[_type == "post" && slug.current == "${context.params.slug}"][0]{
     "slug": slug.current,
     title,

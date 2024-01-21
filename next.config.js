@@ -1,17 +1,18 @@
 const path = require('path')
+const withBundleAnalyzer = require('@next/bundle-analyzer')
 
-const imagesDomains = []
-
-if (process.env.NEXT_PUBLIC_ENV === 'development') {
-  imagesDomains.push('localhost')
-}
+const isBundleAnalyzeEnabled = process.env.ANALYZE == 'true'
 
 const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
-  images: { domains: ["cdn.sanity.io", ...imagesDomains ] },
+  images: {
+    domains: ["cdn.sanity.io"]
+  },
   reactStrictMode: true,
 }
 
-module.exports = nextConfig
+module.exports = withBundleAnalyzer({
+  enabled: isBundleAnalyzeEnabled,
+})(nextConfig)
